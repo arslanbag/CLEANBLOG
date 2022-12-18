@@ -30,24 +30,24 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-        <form novalidate>
+        <form action="/posts" method="POST" novalidate>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <label>Post Title</label>
-              <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+              <h4>Post Title</h4>
+              <input type="text" class="form-control" placeholder="Title" name="title" required data-validation-required-message="Please Enter a Post Title.">
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
-              <label>Post Detail</label>
-              <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
+              <h4>Post Content</h4>
+              <textarea rows="5" class="form-control" placeholder="Detail" name="detail" required data-validation-required-message="Please Enter a Detail."></textarea>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <br>
           <div id="success"></div>
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send</button>
+          <button type="submit" class="btn btn-primary float-right" id="sendMessageButton">ADD</button>
         </form>
       </div>
     </div>
