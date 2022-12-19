@@ -1,7 +1,9 @@
 //const ejs = require('ejs')
 const express = require('express');
 const mongoose = require('mongoose')
-const Post = require('./models/Post')
+var methodOverride = require('method-override')
+const pageControllers = require('./controllers/pageControllers')
+const postControllers = require('./controllers/postControllers')
 const app = express();
 const port = 5000;
 
@@ -16,44 +18,20 @@ app.set("view engine", "ejs")
 app.use(express.static('public'));
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
+app.use(methodOverride('_method', {methods : ['POST', 'GET']}))
 
 //Routes
-app.get('/', async (req, res) => 
-{
-  //const blog = { id: 1, title: 'Blog title', description: 'Blog description' };
-  //res.status(200).send(blog);
-  //-------------------------------
-  const posts = await Post.find({}).sort('-title'); //sort({createDate: -1});
-  res.render('index',{
-    posts
-  })
-});
+////Page
+app.get('/',  pageControllers.getIndexPage);
+app.get('/about', pageControllers.getAboutPage);
+app.get('/posts/:id', pageControllers.getPostPage);
+app.get('/add_post', pageControllers.getAddPage);
+app.get('/edit_post/:id', pageControllers.getEditPost);
 
-app.get('/about', (req, res) => 
-{
-  res.render('about')
-});
-
-app.get('/add_post', (req, res) => 
-{
-
-  res.render('add_post')
-});
-
-app.get('/posts/:id', async (req, res) => 
-{
-  const post = await Post.findById(req.params.id);
-  res.render('post',{post})
-});
-
-app.post('/posts', async (req, res) => 
-{
-  await Post.create(req.body)
-  res.redirect('/');
-});
+////Post
+app.post('/posts', postControllers.createPost);
+app.put('/posts/:id', postControllers.updatePost);
+app.delete('/delete/:id', postControllers.deletePost);
 
 //Port Listen 
-app.listen(port, () => 
-{
-  console.log(`Sunucu ${port} numaralı port ile başlatıldı`);
-});
+app.listen(port, () => { console.log(`Sunucu ${port} numarali port ile başlatildi`);});
