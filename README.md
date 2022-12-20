@@ -61,3 +61,9 @@
 * ##### Herhangi bir post verisini silmek için gerekli çalışmaları yapalım.
 * ##### Kodumuzu MVC yapısına göre tekrar düzenleyelim.
 
+## Ödev 12
+### Clean Blog Projesi 6. Bölüm
+
+#### Clean Blog projemizin bu 6. bölümünde aşağıdaki işlemleri yapalım.
+
+* ##### Uygulamamızı ücresiz servisleri kullanarak yükleyelim.

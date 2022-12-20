@@ -5,11 +5,11 @@ var methodOverride = require('method-override')
 const pageControllers = require('./controllers/pageControllers')
 const postControllers = require('./controllers/postControllers')
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 //Connect Db
 mongoose.set('strictQuery', true);
-mongoose.connect('mongodb://127.0.0.1:27017/cleanblog-test-db');
+mongoose.connect('mongodb+srv://aykut:jGCKH75HR2UcfBsB@cluster0.eenteif.mongodb.net/cleanblog-db?retryWrites=true&w=majority')
 
 //Engine Template
 app.set("view engine", "ejs")
